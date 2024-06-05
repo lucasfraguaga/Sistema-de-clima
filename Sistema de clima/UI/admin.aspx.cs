@@ -23,7 +23,7 @@ namespace UI
             conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "deslogeo de sesion");
             BLL.BLLSesionManager.logaut();
             //ShowMessage("Sesión cerrada correctamente");          
-            string script = "window.onload = function(){ alert('Sesión cerrada correctamente'); window.location.href = 'Default.aspx'; }";
+            string script = "window.onload = function(){ alert('Sesión cerrada correctamente'); window.location.href = 'Principal.aspx'; }";
             ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
             //Response.Redirect("Default.aspx");
         }
