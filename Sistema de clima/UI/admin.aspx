@@ -6,6 +6,12 @@
 <head runat="server">
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
+    <style type="text/css">
+        #mapa {
+            height: 224px;
+            width: 348px;
+        }
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
@@ -15,7 +21,18 @@
         Su roll es:
         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         <br />
-        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Desconectarse" Width="191px" />
+        Direccion oficinas:<br />
+        <iframe id="mapa"></iframe>
+        <script>
+            navigator.geolocation.getCurrentPosition(localizame);
+            function localizame(posicion) {
+                const latitud = posicion.coords.latitud;
+                const longitud = posicion.coords.longitud;
+                document.getElementById('mapa').src = `https://maps.google.com/maps?q=${latitud},${longitud}&z=17&output=embed`;
+            }
+        </script>
+        <br />
+        <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Desconectarse" Width="355px" />
     </form>
 </body>
 </html>

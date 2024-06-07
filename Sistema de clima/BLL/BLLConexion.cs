@@ -18,7 +18,8 @@ namespace BLL
 
         public Usuario ValidarUsuario(string nombre, string contrasena)
         {
-            return conexion.validadUsuario(nombre, contrasena);
+            BLLEncriptado encriptado = new BLLEncriptado();
+            return conexion.validadUsuario(nombre, encriptado.HashPassword(contrasena));
         }
 
         public void insertarBitacora(Usuario usu, string mensaje)

@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Cryptography;
+using System.Text;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
@@ -19,6 +21,7 @@ namespace UI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            BLLEncriptado encriptado = new BLLEncriptado();
             Usuario usu = conexion.ValidarUsuario(TextBox1.Text, TextBox2.Text);
             if (usu is null)
             {
@@ -26,7 +29,7 @@ namespace UI
             }
             else
             {
-                if (TextBox2.Text == usu.Contrasena)
+                if (encriptado.VerifyPassword(TextBox2.Text,usu.Contrasena))
                 {
                     BLLSesionManager.login(usu);
                     switch (usu.Roll)
@@ -52,5 +55,6 @@ namespace UI
             string script = $"alert('{message}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
         }
+
     }
 }
