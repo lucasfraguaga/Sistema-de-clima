@@ -21,6 +21,11 @@
         Su roll es:
         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         <br />
+        <br />
+        Bitacora:<br />
+        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true">
+        </asp:GridView>
+        <br />
         Direccion oficinas:<br />
         <iframe id="mapa"></iframe>
         <script>
@@ -28,7 +33,7 @@
             function localizame(posicion) {
                 const latitud = posicion.coords.latitud;
                 const longitud = posicion.coords.longitud;
-                document.getElementById('mapa').src = `https://maps.google.com/maps?q=${latitud},${longitud}&z=17&output=embed`;
+                document.getElementById('mapa').src = `https://maps.google.com/maps?q=${-34.6219656},${-58.3787757}&z=17&output=embed`;
             }
         </script>
         <br />

@@ -112,5 +112,36 @@ namespace DAL
                 throw e;
             }
         }
+        public List<Bitacora> listarBitacora()
+        {
+            List<Bitacora> listBit = new List<Bitacora>();
+            try
+            {
+                var cnn = new SqlConnection(GetConnectionString());
+                cnn.Open();
+                var cmd = new SqlCommand("ListarBitacora");
+                cmd.Connection = cnn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+           
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Bitacora bitacora = new Bitacora();
+                        bitacora.ID = reader.GetInt32(0);
+                        bitacora.IdUsuario = reader.GetInt32(1);
+                        bitacora.Fecha = reader.GetDateTime(2);
+                        bitacora.Mensaje = reader.GetString(3);
+                        listBit.Add(bitacora);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return listBit;
+        }
     }
 }

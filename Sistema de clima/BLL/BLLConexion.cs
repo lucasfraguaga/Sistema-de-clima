@@ -26,5 +26,10 @@ namespace BLL
         {
             conexion.insertarBitacora(usu, mensaje);
         }
+
+        public List<Bitacora> listarBitacora()
+        {
+            return conexion.listarBitacora();
+        }
     }
 }

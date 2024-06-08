@@ -5,6 +5,7 @@ using System.Reflection.Emit;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using BE;
 using BLL;
 
 namespace UI
@@ -15,7 +16,10 @@ namespace UI
         protected void Page_Load(object sender, EventArgs e)
         {
             Label1.Text = (BLL.BLLSesionManager.GetInstance).Usuario.Usu;
-            Label2.Text = (BLL.BLLSesionManager.GetInstance).Usuario.Roll.ToString();
+            Label2.Text = "WebMaster";
+            //Label2.Text = (BLL.BLLSesionManager.GetInstance).Usuario.Roll.ToString();
+            GridView1.DataSource = conexion.listarBitacora();
+            GridView1.DataBind();
         }
 
         protected void Button1_Click(object sender, EventArgs e)
@@ -33,5 +37,6 @@ namespace UI
             string script = $"alert('{message}');";
             ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
         }
+
     }
 }

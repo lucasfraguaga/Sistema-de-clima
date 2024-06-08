@@ -15,6 +15,14 @@
             <br />
             Contraseña:&nbsp;&nbsp;
             <asp:TextBox ID="TextBox2" runat="server" TextMode="Password" Width="137px"></asp:TextBox>
+            <asp:RegularExpressionValidator
+                ID="RegexValidator"
+                runat="server"
+                ControlToValidate="TextBox2"
+                ErrorMessage="El texto debe contener al menos una letra, un número y tener un mínimo de 8 caracteres."
+                ValidationExpression="^(?=.*[A-Za-z])(?=.*\d)[A-Za-z\d]{8,}$"
+                ForeColor="Red">
+            </asp:RegularExpressionValidator>
             <br />
             <asp:RadioButton ID="rbShowPassword" runat="server" Text="Show Password" GroupName="passwordOption" OnClick="togglePasswordVisibility(this)" />
             <asp:RadioButton ID="rbHidePassword" runat="server" Text="Hide Password" GroupName="passwordOption" OnClick="togglePasswordVisibility(this)" Checked="true" />
