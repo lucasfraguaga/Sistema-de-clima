@@ -24,7 +24,7 @@ namespace UI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
-            conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "deslogeo de sesion");
+            conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "deslogeo de sesion admin");
             BLL.BLLSesionManager.logaut();
             //ShowMessage("Sesión cerrada correctamente");          
             string script = "window.onload = function(){ alert('Sesión cerrada correctamente'); window.location.href = 'Principal.aspx'; }";

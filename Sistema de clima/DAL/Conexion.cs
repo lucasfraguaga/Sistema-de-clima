@@ -14,7 +14,7 @@ namespace DAL
         {
             var cs = new SqlConnectionStringBuilder();
             cs.IntegratedSecurity = true;
-            cs.DataSource = @"LACUCA\SQLEXPRESS";
+            cs.DataSource = @"DESKTOP-6S00J44\SQLEXPRESS01";
             cs.InitialCatalog = "web";
             return cs.ConnectionString;
         }
