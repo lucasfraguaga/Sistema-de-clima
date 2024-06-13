@@ -52,7 +52,7 @@ namespace UI
                 }
                 else
                 {
-                    conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "contraseña incorrecta");
+                    conexion.insertarBitacora(usu, "contraseña incorrecta");
                     ShowMessage("Contraseña incorrecta");
                 }
             }
