@@ -102,7 +102,7 @@ namespace DAL
 
                 cmd.Parameters.Add(new SqlParameter("idUsuario", usu.Id));
                 cmd.Parameters.Add(new SqlParameter("mensaje", mensaje));
-                cmd.Parameters.Add(new SqlParameter("fecha", DateTime.Now));
+                cmd.Parameters.Add(new SqlParameter("fecha", DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss")));
 
 
                 var id = cmd.ExecuteScalar();
@@ -133,6 +133,7 @@ namespace DAL
                         bitacora.IdUsuario = reader.GetInt32(1);
                         bitacora.Fecha = reader.GetDateTime(2);
                         bitacora.Mensaje = reader.GetString(3);
+                        bitacora.Corrupta = reader.GetString(5);
                         listBit.Add(bitacora);
                     }
                 }
@@ -142,6 +143,62 @@ namespace DAL
                 throw e;
             }
             return listBit;
+        }
+        public List<Usuario> ListarUsuarios()
+        {
+            List<Usuario> listBit = new List<Usuario>();
+            try
+            {
+                var cnn = new SqlConnection(GetConnectionString());
+                cnn.Open();
+                var cmd = new SqlCommand("ListarUsuarios");
+                cmd.Connection = cnn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Usuario usu = new Usuario();
+                        usu.Usu = reader.GetString(0);
+                        usu.Contrasena = reader.GetString(1);
+                        usu.Roll = reader.GetInt32(2);
+                        usu.Id = reader.GetInt32(3);
+                        usu.Corrupto = reader.GetString(5);
+                        listBit.Add(usu);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return listBit;
+        }
+
+        public void insertarUsuario(Usuario usu)
+        {
+            try
+            {
+                var cnn = new SqlConnection(GetConnectionString());
+                cnn.Open();
+                var cmd = new SqlCommand("RegistrarUsuario");
+                cmd.Connection = cnn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+
+                cmd.Parameters.Add(new SqlParameter("nombre", usu.Usu));
+                cmd.Parameters.Add(new SqlParameter("contraseña", usu.Contrasena));
+                cmd.Parameters.Add(new SqlParameter("roll", usu.Roll));
+
+
+                var id = cmd.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
         }
     }
 }

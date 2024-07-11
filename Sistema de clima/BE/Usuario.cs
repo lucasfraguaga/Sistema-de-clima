@@ -38,6 +38,14 @@ namespace BE
             get { return id; }
             set { id = value; }
         }
+        private string corrupto;
+
+        public string Corrupto
+        {
+            get { return corrupto; }
+            set { corrupto = value; }
+        }
+
 
     }
 }

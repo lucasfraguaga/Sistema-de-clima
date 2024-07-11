@@ -63,6 +63,15 @@ namespace UI
             ScriptManager.RegisterStartupScript(this, GetType(), "showalert", script, true);
         }
 
-
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            Usuario usuBitacora = new Usuario();
+            usuBitacora.Id = 8;
+            usuBitacora.Usu = "bitacora";
+            usuBitacora.Roll = 1;
+            conexion.insertarBitacora(usuBitacora, "ingreso a pantalla de registro");
+            //ShowMessage("Sesión cerrada correctamente");          
+            Response.Redirect("Registro.aspx");
+        }
     }
 }

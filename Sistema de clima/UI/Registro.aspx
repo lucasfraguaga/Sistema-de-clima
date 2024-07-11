@@ -1,4 +1,4 @@
-﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Principal.aspx.cs" Inherits="UI.Principal" %>
+﻿<%@ Page Language="C#" AutoEventWireup="true" CodeBehind="Registro.aspx.cs" Inherits="UI.Registro" %>
 
 <!DOCTYPE html>
 
@@ -11,7 +11,7 @@
     <form id="form1" runat="server">
         <div>
             <br />
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pantalla de logeo<br />
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; Pantalla de registro<br />
             <br />
             Usuario:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
             <asp:TextBox ID="TextBox1" runat="server" Width="140px"></asp:TextBox>
@@ -40,10 +40,13 @@
                 }
             </script>
             <br />
+            <asp:DropDownList ID="DropDownList1" runat="server" Height="22px" Width="232px">
+            </asp:DropDownList>
             <br />
-            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Iniciar sesion" Width="234px" />
             <br />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Registrar" Width="234px" />
+            <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Registrar" Width="234px" />
+            <br />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click1" Text="Volver" Width="234px" />
             <br />
         </div>
     </form>

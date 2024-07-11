@@ -39,5 +39,14 @@ namespace BE
 			set { mensaje = value; }
 		}
 
+		private string corrupta;
+
+		public string Corrupta
+		{
+			get { return corrupta; }
+			set { corrupta = value; }
+		}
+
+
 	}
 }

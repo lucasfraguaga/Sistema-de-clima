@@ -22,9 +22,12 @@
         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
+        Ir a
         Bitacora:<br />
-        <asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true">
-        </asp:GridView>
+        <asp:Button ID="Button4" runat="server" OnClick="Button4_Click" Text="Bitacora" Width="360px" />
+        <br />
+        Ver usuarios con sus datos:<br />
+        <asp:Button ID="Button3" runat="server" OnClick="Button2_Click" Text="Usuarios" Width="359px" />
         <br />
         Direccion oficinas:<br />
         <iframe id="mapa"></iframe>

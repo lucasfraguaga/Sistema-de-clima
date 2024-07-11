@@ -124,7 +124,10 @@
     <Content Include="Global.asax" />
     <Content Include="Media\GranjaCirculosSanti2.png" />
     <Content Include="Media\GranjaCirculosSantiago.drawio.png" />
+    <Content Include="PantallaBitacora.aspx" />
+    <Content Include="PantallaUsuarios.aspx" />
     <Content Include="Principal.aspx" />
+    <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.esm.js" />
@@ -197,6 +200,20 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="PantallaBitacora.aspx.cs">
+      <DependentUpon>PantallaBitacora.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PantallaBitacora.aspx.designer.cs">
+      <DependentUpon>PantallaBitacora.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="PantallaUsuarios.aspx.cs">
+      <DependentUpon>PantallaUsuarios.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="PantallaUsuarios.aspx.designer.cs">
+      <DependentUpon>PantallaUsuarios.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
@@ -205,6 +222,13 @@
       <DependentUpon>Principal.aspx</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Registro.aspx.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Registro.aspx.designer.cs">
+      <DependentUpon>Registro.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Site.Master.cs">
       <DependentUpon>Site.Master</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

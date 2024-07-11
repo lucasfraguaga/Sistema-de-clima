@@ -31,5 +31,13 @@ namespace BLL
         {
             return conexion.listarBitacora();
         }
+        public List<Usuario> ListarUsuario()
+        {
+            return conexion.ListarUsuarios();
+        }
+        public void insertarUsuario(Usuario usu)
+        {
+            conexion.insertarUsuario(usu);
+        }
     }
 }
