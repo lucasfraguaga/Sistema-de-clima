@@ -45,6 +45,14 @@ namespace BE
             get { return corrupto; }
             set { corrupto = value; }
         }
+        private bool Bloqueado;
+
+        public bool bloqueado
+        {
+            get { return Bloqueado; }
+            set { Bloqueado = value; }
+        }
+
 
 
     }

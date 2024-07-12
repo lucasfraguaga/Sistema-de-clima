@@ -1,12 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Web;
 using BE;
 using DAL;
 
 namespace BLL
 {
+    //paso intermedio entre ui y dal
     public class BLLConexion
     {
         Conexion conexion = new Conexion();
@@ -38,6 +40,22 @@ namespace BLL
         public void insertarUsuario(Usuario usu)
         {
             conexion.insertarUsuario(usu);
+        }
+        public bool generarBackup()
+        {
+            return conexion.generarBackup();
+        }
+        public bool restaurarBase()
+        {
+            return conexion.restaurarBase();
+        }
+        public void IncrementarIntentosFallidos(Usuario usu)
+        {
+            conexion.IncrementarIntentosFallidos(usu);
+        }
+        public bool ReiniciarIntentosFallidos(Usuario usu)
+        {
+            return conexion.ReiniciarIntentosFallidos(usu);
         }
     }
 }

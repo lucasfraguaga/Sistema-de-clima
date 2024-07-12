@@ -14,6 +14,7 @@ namespace UI
         BLLConexion conexion = new BLLConexion();
         protected void Page_Load(object sender, EventArgs e)
         {
+            //logica para que no se pueda acceder a la bitacora mediante el link e mensajes de aviso
             //https://localhost:44325/PantallaBitacora
             if(BLLSesionManager.GetInstance == null)
             {
@@ -22,6 +23,7 @@ namespace UI
             }
             else
             {
+                //logica para no acceder si no es admin
                 if (BLLSesionManager.GetInstance.Usuario.Roll != 1)
                 {
 
@@ -32,6 +34,7 @@ namespace UI
                 }
                 else
                 {
+                    //llenado de datos de bitacora e sesion, aca se logro entrar
                     Label1.Text = (BLL.BLLSesionManager.GetInstance).Usuario.Usu;
                     Label2.Text = "WebMaster";
                     List<Bitacora> bitacora = new List<Bitacora>();
@@ -41,7 +44,7 @@ namespace UI
                 }
             }    
         }
-
+        //funcion para mostrar cartel
         private void ShowMessage(string message)
         {
             string script = $"alert('{message}');";
@@ -50,18 +53,17 @@ namespace UI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            //logica de desconeccion con log
             conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "deslogeo de sesion admin");
-            BLL.BLLSesionManager.logaut();
-            //ShowMessage("Sesión cerrada correctamente");          
+            BLL.BLLSesionManager.logaut();        
             string script = "window.onload = function(){ alert('Sesión cerrada correctamente'); window.location.href = 'Principal.aspx'; }";
-            ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-            //Response.Redirect("Default.aspx");
+            ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);;
         }
 
         protected void Button2_Click(object sender, EventArgs e)
         {
-            conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "vuelta a la pantalla de admin");
-            //ShowMessage("Sesión cerrada correctamente");          
+            //logica para volver atras con log
+            conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "vuelta a la pantalla de admin");       
             Response.Redirect("admin.aspx");
         }
     }

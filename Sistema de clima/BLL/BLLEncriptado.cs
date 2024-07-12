@@ -7,6 +7,7 @@ using System.Web;
 
 namespace BLL
 {
+    //gestor del encriptado de contraseñas
     public class BLLEncriptado
     {
         public string HashPassword(string password)

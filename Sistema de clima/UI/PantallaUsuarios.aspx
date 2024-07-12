@@ -20,6 +20,19 @@
         Bitacora:<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true">
         </asp:GridView>
             <br />
+            <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Quitar bloqueo" Width="356px" />
+            <br />
+            Id a quitar bloqueo:
+            <asp:TextBox ID="txtNumeros" runat="server" />
+            <asp:RegularExpressionValidator
+                ID="RegexValidator"
+                runat="server"
+                ControlToValidate="txtNumeros"
+                ErrorMessage="Este campo debe contener solo números."
+                ValidationExpression="^\d+$"
+                ForeColor="Red">
+            </asp:RegularExpressionValidator>
+            <br />
             <br />
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Volver" Width="356px" />
             <br />

@@ -6,6 +6,7 @@ using BE;
 
 namespace BLL
 {
+    //manejador de sesion con singleton
     public class BLLSesionManager
     {
         private Usuario usuario;

@@ -29,6 +29,13 @@
         Ver usuarios con sus datos:<br />
         <asp:Button ID="Button3" runat="server" OnClick="Button2_Click" Text="Usuarios" Width="359px" />
         <br />
+        Generar backup base de datos:<br />
+        <asp:Button ID="Button5" runat="server" OnClick="Button5_Click" Text="Backup" Width="359px" />
+        <br />
+        Volver a ultima version de backup:<br />
+        <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Restaurar base" Width="358px" />
+        <br />
+        <br />
         Direccion oficinas:<br />
         <iframe id="mapa"></iframe>
         <script>

@@ -18,45 +18,79 @@ namespace UI
         {
 
         }
-
+        //variable para bloquear muchos intentos fallidos de usuario incorrecto
+        static int bloqueoComun = 0;
         protected void Button1_Click(object sender, EventArgs e)
         {
+            
             BLLEncriptado encriptado = new BLLEncriptado();
+            //traer usuario de base de datos
             Usuario usu = conexion.ValidarUsuario(TextBox1.Text, TextBox2.Text);
-            if (usu is null)
-            {
-                //conexion.insertarBitacora(usu, "Usuario no encontrado");
-                ShowMessage("Usuario no encontrado");
-            }
-            else
-            {
-                if (encriptado.VerifyPassword(TextBox2.Text,usu.Contrasena))
+            //if de bloqueo por 3 veces de usuario incorrecto
+            if (bloqueoComun != 3) 
+            { 
+                //if por usuario no encontrado
+                if (usu is null)
                 {
-                    BLLSesionManager.login(usu);
-                    switch (usu.Roll)
-                    {
-                        case 1:
-                            conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "logeo de sesion admin");
-                            string script = "window.onload = function(){ alert('Sesión iniciada correctamente'); window.location.href = 'admin.aspx'; }";
-                            ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
-                            break;
-                        case 2:
-                            conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "logeo de sesion usuario");
-                            string script2 = "window.onload = function(){ alert('Sesión iniciada correctamente'); window.location.href = 'User.aspx'; }";
-                            ClientScript.RegisterStartupScript(this.GetType(), "alert", script2, true);
-                            break;
-                        default:
-                            ShowMessage("Roll no valido");
-                            break;
-                    }
+                    //conexion.insertarBitacora(usu, "Usuario no encontrado");
+                    ShowMessage("Usuario no encontrado");
+                    bloqueoComun = bloqueoComun+1;
                 }
                 else
                 {
-                    conexion.insertarBitacora(usu, "contraseña incorrecta");
-                    ShowMessage("Contraseña incorrecta");
+                    //if por usuario bloqueado
+                    if (!usu.bloqueado) 
+                    { 
+                        //if validado de usuario
+                        if (encriptado.VerifyPassword(TextBox2.Text,usu.Contrasena))
+                        {
+                            //logeo de usuario, reinicio de intentos e log de bitacora, tambien se recetea el bloqueo comun
+                            BLLSesionManager.login(usu);
+                            conexion.ReiniciarIntentosFallidos(usu);
+                            bloqueoComun = 0;
+                            switch (usu.Roll)
+                            {
+                                case 1:
+                                    conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "logeo de sesion admin");
+                                    string script = "window.onload = function(){ alert('Sesión iniciada correctamente'); window.location.href = 'admin.aspx'; }";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);
+                                    break;
+                                case 2:
+                                    conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "logeo de sesion usuario");
+                                    string script2 = "window.onload = function(){ alert('Sesión iniciada correctamente'); window.location.href = 'User.aspx'; }";
+                                    ClientScript.RegisterStartupScript(this.GetType(), "alert", script2, true);
+                                    break;
+                                default:
+                                    ShowMessage("Roll no valido");
+                                    break;
+                            }
+                        }
+                        else
+                        {
+                            //log de bitacora de contraseña incorrecte e incremento de intentos fallidos, tambien se recetea el bloqueo comun
+                            conexion.insertarBitacora(usu, "contraseña incorrecta");
+                            conexion.IncrementarIntentosFallidos(usu);
+                            bloqueoComun = 0;
+                            ShowMessage("Contraseña incorrecta");
+                        }
+                    }
+                    else
+                    {
+                        //receteo de bloqueo comun e mensaje de usuario bloqueado
+                        bloqueoComun = 0;
+                        ShowMessage("el usuario esta bloqueado, contactese con un administrador");
+                    }
                 }
             }
+            else
+            {
+                //mensaje de intentos comunes fallidos y bloqueo de acciones
+                ShowMessage("intentaste ingresar un usuario invalido 3 veces segidas, se bloqueo la posibilidad de logear");
+                Button1.Enabled = false;
+                Button2.Enabled = false;
+            }
         }
+        //funcion para mostrar menssajes
         private void ShowMessage(string message)
         {
             string script = $"alert('{message}');";
@@ -65,6 +99,7 @@ namespace UI
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            //resgistro de log de ingreso a pantalla de registro e redireccion a la misma
             Usuario usuBitacora = new Usuario();
             usuBitacora.Id = 8;
             usuBitacora.Usu = "bitacora";
