@@ -27,7 +27,7 @@ namespace UI
             //traer usuario de base de datos
             Usuario usu = conexion.ValidarUsuario(TextBox1.Text, TextBox2.Text);
             //if de bloqueo por 3 veces de usuario incorrecto
-            if (bloqueoComun != 3) 
+            if (bloqueoComun != 2) 
             { 
                 //if por usuario no encontrado
                 if (usu is null)
@@ -68,10 +68,20 @@ namespace UI
                         else
                         {
                             //log de bitacora de contraseña incorrecte e incremento de intentos fallidos, tambien se recetea el bloqueo comun
-                            conexion.insertarBitacora(usu, "contraseña incorrecta");
+                            
+                            if(usu.intentos == 2)
+                            {
+                                conexion.insertarBitacora(usu, "contraseña incorrecta y bloqueamos la cuenta por 3 intentos fallidos");
+                                ShowMessage("Contraseña incorrecta y bloqueamos la cuenta por 3 intentos fallidos");
+                            }
+                            else
+                            {
+                                conexion.insertarBitacora(usu, "contraseña incorrecta");
+                                ShowMessage("Contraseña incorrecta");
+                            }
                             conexion.IncrementarIntentosFallidos(usu);
                             bloqueoComun = 0;
-                            ShowMessage("Contraseña incorrecta");
+                            
                         }
                     }
                     else

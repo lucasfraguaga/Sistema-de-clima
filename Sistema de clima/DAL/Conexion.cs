@@ -78,6 +78,7 @@ namespace DAL
                         int roll = reader.GetInt32(2);
                         int id = reader.GetInt32(3);
                         bool bloqueado = reader.GetBoolean(4);
+                        int intentos = reader.GetInt32(5);
                         //if (nombreUsuario == nom && contrasena == con)
                         //{
                         Usuario usu = new Usuario();
@@ -86,6 +87,7 @@ namespace DAL
                         usu.Roll = roll;
                         usu.Id = id;
                         usu.bloqueado = bloqueado;
+                        usu.intentos = intentos;
                         return usu;
                         //}
                         //else
@@ -185,6 +187,7 @@ namespace DAL
                         usu.Roll = reader.GetInt32(2);
                         usu.Id = reader.GetInt32(3);
                         usu.Corrupto = reader.GetString(5);
+                        usu.bloqueado = reader.GetBoolean(6);
                         listBit.Add(usu);
                     }
                 }

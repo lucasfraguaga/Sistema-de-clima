@@ -17,7 +17,15 @@
         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
-        Bitacora:<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true">
+        Bitacora:<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="false">
+            <Columns>
+                <asp:BoundField DataField="Id" HeaderText="ID" />
+                <asp:BoundField DataField="Usu" HeaderText="Usuario" />
+                <asp:BoundField DataField="Contrasena" HeaderText="Contraseña" />
+                <asp:BoundField DataField="Roll" HeaderText="Roll" />
+                <asp:BoundField DataField="Corrupto" HeaderText="Corrupto" />
+                <asp:BoundField DataField="bloqueado" HeaderText="Bloqueado" />
+            </Columns>
         </asp:GridView>
             <br />
             <asp:Button ID="Button3" runat="server" OnClick="Button3_Click" Text="Quitar bloqueo" Width="356px" />

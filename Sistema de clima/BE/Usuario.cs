@@ -52,6 +52,14 @@ namespace BE
             get { return Bloqueado; }
             set { Bloqueado = value; }
         }
+        private int Intentos;
+
+        public int intentos
+        {
+            get { return Intentos; }
+            set { Intentos = value; }
+        }
+
 
 
 

@@ -48,6 +48,10 @@ namespace UI
             {
                 conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "se quito el bloqueo del usuario" + txtNumeros.Text);
                 ScriptManager.RegisterStartupScript(this, this.GetType(), "bloqueo quitado", "alert('bloqueo quitado.');", true);
+                List<Usuario> listusuarios = new List<Usuario>();
+                listusuarios = conexion.ListarUsuario();
+                GridView1.DataSource = listusuarios;
+                GridView1.DataBind();
             }
             else
             {
