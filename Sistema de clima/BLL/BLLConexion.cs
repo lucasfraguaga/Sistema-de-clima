@@ -57,5 +57,25 @@ namespace BLL
         {
             return conexion.ReiniciarIntentosFallidos(usu);
         }
+        public List<Producto> listarProductosUsuario(int usuario)
+        {
+            return conexion.listarProductosUsuario(usuario);
+        }
+        public void InsertarUsuarioxProducto(int usuario, int producto)
+        {
+            conexion.InsertarUsuarioxProducto(usuario, producto);
+        }
+        public int InsertarVenta(int usuario, int precio)
+        {
+            return conexion.InsertarVenta(usuario, precio);
+        }
+        public void InsertarVentaxProducto(int venta, int producto, int precio)
+        {
+            conexion.InsertarVentaxProducto(venta, producto, precio);
+        }
+        public List<Venta> ObtenerVentasCompleto()
+        {
+            return conexion.ObtenerVentasCompleto();
+        }
     }
 }

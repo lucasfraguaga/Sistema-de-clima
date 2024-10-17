@@ -121,5 +121,11 @@ namespace UI
                 conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "no se pudo restaurar la base");
             }
         }
+
+        protected void Button7_Click(object sender, EventArgs e)
+        {
+            BLLGestorXML xml = new BLLGestorXML();
+            xml.CrearXmlDeVentas(conexion.ObtenerVentasCompleto());           
+        }
     }
 }

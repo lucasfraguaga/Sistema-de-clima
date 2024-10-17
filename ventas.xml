@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Ventas>
+  <Venta>
+    <Id>1</Id>
+    <IdUsuario>14</IdUsuario>
+    <PrecioTotal>450</PrecioTotal>
+    <Productos>
+      <Producto>
+        <IdProducto>1</IdProducto>
+        <Nombre>Equipo1</Nombre>
+        <Precio>100</Precio>
+      </Producto>
+      <Producto>
+        <IdProducto>2</IdProducto>
+        <Nombre>Equipo2</Nombre>
+        <Precio>150</Precio>
+      </Producto>
+      <Producto>
+        <IdProducto>3</IdProducto>
+        <Nombre>Equipo3</Nombre>
+        <Precio>200</Precio>
+      </Producto>
+    </Productos>
+  </Venta>
+  <Venta>
+    <Id>2</Id>
+    <IdUsuario>14</IdUsuario>
+    <PrecioTotal>100</PrecioTotal>
+    <Productos>
+      <Producto>
+        <IdProducto>1</IdProducto>
+        <Nombre>Equipo1</Nombre>
+        <Precio>100</Precio>
+      </Producto>
+    </Productos>
+  </Venta>
+</Ventas>

@@ -14,8 +14,15 @@ namespace UI
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            // instancia de usuario a mostrar
-            usu.Text = BLLSesionManager.GetInstance.Usuario.Usu;
+            // if para verificar que sea la primera ves que se abre esta pagina
+            if (!IsPostBack)
+            {
+                // instancia de usuario a mostrar
+                usu.Text = BLLSesionManager.GetInstance.Usuario.Usu;
+            }
+            // codigo para mostrar la lista de productos del usuario
+            GridView1.DataSource = conexion.listarProductosUsuario(BLLSesionManager.GetInstance.Usuario.Id);
+            GridView1.DataBind();
         }
         BLLConexion conexion = new BLLConexion();
         protected void Button1_Click(object sender, EventArgs e)
@@ -25,6 +32,17 @@ namespace UI
                 BLL.BLLSesionManager.logaut();        
                 string script = "window.onload = function(){ alert('Sesión cerrada correctamente'); window.location.href = 'Principal.aspx'; }";
                 ClientScript.RegisterStartupScript(this.GetType(), "alert", script, true);           
+        }
+
+        protected void Button2_Click(object sender, EventArgs e)
+        {
+            //logica para ir al carrito de compras
+            Response.Redirect("CarritoCompra.aspx");
+        }
+
+        protected void GridView1_SelectedIndexChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }

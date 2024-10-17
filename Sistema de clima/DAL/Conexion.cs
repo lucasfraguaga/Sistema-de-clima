@@ -344,5 +344,173 @@ namespace DAL
 
             return success;
         }
+        //logica para mostrar los productos de los usuarios
+        public List<Producto> listarProductosUsuario(int usuario)
+        {
+            List<Producto> listBit = new List<Producto>();
+            try
+            {
+                var cnn = new SqlConnection(GetConnectionString());
+                cnn.Open();
+                var cmd = new SqlCommand("ObtenerProductosPorUsuario");
+                cmd.Connection = cnn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+                cmd.Parameters.Add(new SqlParameter("IdUsuario", usuario));
+
+                using (SqlDataReader reader = cmd.ExecuteReader())
+                {
+                    while (reader.Read())
+                    {
+                        Producto producto = new Producto();
+                        producto.ID = reader.GetInt32(0);
+                        producto.IdProducto = reader.GetInt32(1);
+                        producto.Nombre = reader.GetString(2);
+                        producto.Precio = reader.GetInt32(3);
+                        producto.Descripcion = reader.GetString(4);
+                        producto.Estado = reader.GetBoolean(5);
+                        listBit.Add(producto);
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+            return listBit;
+        }
+        //logica cargar productos por usuario
+        public void InsertarUsuarioxProducto(int usuario, int producto)
+        {
+            try
+            {
+                var cnn = new SqlConnection(GetConnectionString());
+                cnn.Open();
+                var cmd = new SqlCommand("sp_InsertarUsuarioxProducto");
+                cmd.Connection = cnn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("IdUsuario", usuario));
+                cmd.Parameters.Add(new SqlParameter("IdProducto", producto));
+                cmd.Parameters.Add(new SqlParameter("Estado", true));
+
+
+                var id = cmd.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+
+        public int InsertarVenta(int usuario, int precio)
+        {
+            try
+            {
+                using (var cnn = new SqlConnection(GetConnectionString()))
+                {
+                    cnn.Open();
+                    using (var cmd = new SqlCommand("sp_InsertarVenta", cnn))
+                    {
+                        cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                        cmd.Parameters.Add(new SqlParameter("@IdUsuario", usuario));
+                        cmd.Parameters.Add(new SqlParameter("@Precio", precio));
+
+                        var outputIdParam = new SqlParameter("@NuevoIdVenta", SqlDbType.Int)
+                        {
+                            Direction = ParameterDirection.Output
+                        };
+                        cmd.Parameters.Add(outputIdParam);
+
+                        cmd.ExecuteNonQuery();
+
+                        return (int)outputIdParam.Value;
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw new Exception("Error al insertar la venta", e);
+            }
+        }
+        public void InsertarVentaxProducto(int venta, int producto, int precio)
+        {
+            try
+            {
+                var cnn = new SqlConnection(GetConnectionString());
+                cnn.Open();
+                var cmd = new SqlCommand("sp_InsertarVentaxProducto");
+                cmd.Connection = cnn;
+                cmd.CommandType = System.Data.CommandType.StoredProcedure;
+
+                cmd.Parameters.Add(new SqlParameter("IdVenta", venta));
+                cmd.Parameters.Add(new SqlParameter("IdProducto", producto));
+                cmd.Parameters.Add(new SqlParameter("Precio", precio));
+
+
+                var id = cmd.ExecuteScalar();
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+        }
+        public List<Venta> ObtenerVentasCompleto()
+        {
+            var ventas = new List<Venta>();
+
+            try
+            {
+                using (var cnn = new SqlConnection(GetConnectionString()))
+                {
+                    cnn.Open();
+                    var cmd = new SqlCommand("sp_ObtenerVentasCompleto", cnn);
+                    cmd.CommandType = CommandType.StoredProcedure;
+
+                    using (var reader = cmd.ExecuteReader())
+                    {
+                        Venta ventaActual = null;
+
+                        while (reader.Read())
+                        {
+                            int idVenta = reader.GetInt32(0);
+
+                            // Si cambiamos de venta, creamos una nueva instancia de Venta
+                            if (ventaActual == null || ventaActual.Id != idVenta)
+                            {
+                                ventaActual = new Venta
+                                {
+                                    Id = idVenta,
+                                    IdUsuario = reader.GetInt32(1),
+                                    PrecioTotal = reader.GetInt32(2)
+                                };
+
+                                ventas.Add(ventaActual);
+                            }
+
+                            // Agregamos el producto a la lista de productos de la venta actual
+                            if (!reader.IsDBNull(3)) // Si existe un producto asociado
+                            {
+                                var producto = new Producto
+                                {
+                                    IdProducto = reader.GetInt32(3),
+                                    Nombre = reader.GetString(4),
+                                    Precio = reader.GetInt32(5)
+                                };
+
+                                ventaActual.Productos.Add(producto);
+                            }
+                        }
+                    }
+                }
+            }
+            catch (Exception e)
+            {
+                throw e;
+            }
+
+            return ventas;
+        }
+
     }
 }

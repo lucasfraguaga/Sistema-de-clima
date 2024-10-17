@@ -35,6 +35,9 @@
         Volver a ultima version de backup:<br />
         <asp:Button ID="Button6" runat="server" OnClick="Button6_Click" Text="Restaurar base" Width="358px" />
         <br />
+        Ver estadisticos de ventas:<br />
+        <asp:Button ID="Button7" runat="server" OnClick="Button7_Click" Text="Ventas" Width="358px" />
+        <br />
         <br />
         Direccion oficinas:<br />
         <iframe id="mapa"></iframe>

@@ -69,6 +69,7 @@
   <ItemGroup>
     <Compile Include="BLLConexion.cs" />
     <Compile Include="BLLEncriptado.cs" />
+    <Compile Include="BLLGestorXML.cs" />
     <Compile Include="BLLSesionManager.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
