@@ -39,6 +39,7 @@ namespace BLL
 
                 // Guardar el documento XML en el archivo
                 xmlDoc.Save(@"C:\Users\lucas\Desktop\GIT\ventas.xml");
+                
             }
             catch (Exception e)
             {

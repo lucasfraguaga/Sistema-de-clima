@@ -125,7 +125,8 @@ namespace UI
         protected void Button7_Click(object sender, EventArgs e)
         {
             BLLGestorXML xml = new BLLGestorXML();
-            xml.CrearXmlDeVentas(conexion.ObtenerVentasCompleto());           
+            xml.CrearXmlDeVentas(conexion.ObtenerVentasCompleto());
+            Response.Redirect("EstadisticaVenta.aspx");
         }
     }
 }

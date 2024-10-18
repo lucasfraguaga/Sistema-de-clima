@@ -67,7 +67,7 @@ namespace UI
             {
                 // Manejo de errores
                 Console.WriteLine("Error al procesar el XML: " + e.Message);
-                return null;
+                return null; 
             }
         }
     }
