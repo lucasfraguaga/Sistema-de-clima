@@ -12,26 +12,31 @@ namespace UI
 {
     public partial class EstadisticaVenta : System.Web.UI.Page
     {
+        //path donde se guarda el xml
         private const string xmlAbsolutePath = @"C:\Users\lucas\Desktop\GIT\ventas.xml"; 
+        //web service para sacar estadisticas
         WebServiceEstadisticoVenta estadisticoVenta = new WebServiceEstadisticoVenta();
 
         protected void Page_Load(object sender, EventArgs e)
         {
+            //llamada a cargar ventas
             if (!IsPostBack)
             {
                 CargarVentas();
             }
         }
+        //funcion para levantar el xml y cargar las ventas en el controlador
         private void CargarVentas()
         {
             try
             {
+                //validacion de que exista el archivo
                 if (!File.Exists(xmlAbsolutePath))
                 {
                     lblTotal.Text = "El archivo XML no se encuentra en la ruta especificada.";
                     return;
                 }
-
+                //abriendo archivo y separando los id
                 XDocument xmlDoc = XDocument.Load(xmlAbsolutePath);
 
                 var ventas = from venta in xmlDoc.Descendants("Venta")
@@ -50,7 +55,7 @@ namespace UI
                 lblTotal.Text = $"Error: {ex.Message}";
             }
         }
-
+        //boton para mostrar productos, seleccionando un id
         protected void btnMostrarProductos_Click(object sender, EventArgs e)
         {
             try
@@ -95,6 +100,7 @@ namespace UI
 
         protected void Button1_Click(object sender, EventArgs e)
         {
+            //logica para mostrar al mejor cliente consumiendo el webservice
             ClienteGasto clienteGasto = new ClienteGasto();
             clienteGasto = estadisticoVenta.ObtenerClienteQueMasGasto(xmlAbsolutePath);
             Label1.Text = "El mejor cliente es: " + clienteGasto.IdUsuario + " habiendo gastado: " + clienteGasto.TotalGastado.ToString();
@@ -102,6 +108,7 @@ namespace UI
 
         protected void Button2_Click(object sender, EventArgs e)
         {
+            //redireccion a pantalla de admin
             Response.Redirect("admin.aspx");
         }
     }

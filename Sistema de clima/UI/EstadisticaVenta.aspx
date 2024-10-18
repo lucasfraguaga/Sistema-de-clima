@@ -22,7 +22,7 @@
             <asp:Label ID="Label1" runat="server"></asp:Label>
             <br />
             <br />
-            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Volver" Width="155px" />
+            <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" style="height: 26px" Text="Volver" Width="155px" />
         </div>
     </form>
 </body>

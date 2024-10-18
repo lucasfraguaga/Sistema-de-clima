@@ -9,6 +9,7 @@ namespace BLL
 {
     public class BLLGestorXML
     {
+        //funcion para crear el xml de las ventas
         public void CrearXmlDeVentas(List<Venta> ventas)
         {
             try

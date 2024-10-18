@@ -124,6 +124,7 @@ namespace UI
 
         protected void Button7_Click(object sender, EventArgs e)
         {
+            //creacion del xml de venta y redireccion a pantalla de estadisticas de venta
             BLLGestorXML xml = new BLLGestorXML();
             xml.CrearXmlDeVentas(conexion.ObtenerVentasCompleto());
             Response.Redirect("EstadisticaVenta.aspx");

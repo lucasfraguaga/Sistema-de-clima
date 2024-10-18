@@ -7,6 +7,7 @@ namespace BE
 {
     public class ClienteGasto
     {
+        //clase para mostrar estadisticas de gastos del cliente
         public int IdUsuario { get; set; }
         public decimal TotalGastado { get; set; }
     }
