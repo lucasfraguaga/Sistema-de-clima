@@ -3,10 +3,11 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="Content/CorritoCompra.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
     <form id="form1" runat="server">
-        <div class="form-container">
+        <div class="container">
             <h2>&nbsp;Pestaña usuario:
                 <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
             </h2>

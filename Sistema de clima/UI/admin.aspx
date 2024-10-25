@@ -4,6 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="Content/admin.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
     <style type="text/css">
@@ -15,6 +16,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
+        <div class="container">
         El usuario ingresado es:
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
@@ -51,6 +53,7 @@
         </script>
         <br />
         <asp:Button ID="Button1" runat="server" OnClick="Button1_Click" Text="Desconectarse" Width="355px" />
+            </div>
     </form>
 </body>
 </html>

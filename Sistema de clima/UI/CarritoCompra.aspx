@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="Content/CorritoCompra.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
             Pestaña usuario:
             <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
                     <h1>Lista de Productos</h1>

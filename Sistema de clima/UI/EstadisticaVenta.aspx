@@ -2,11 +2,12 @@
 <!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="Content/CorritoCompra.css" rel="stylesheet" type="text/css" />
     <title>Ventas</title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
             <asp:Button ID="btnMostrarProductos" runat="server" Text="Mostrar Productos" OnClick="btnMostrarProductos_Click" />
             <asp:DropDownList ID="ddlVentas" runat="server"></asp:DropDownList>
             <br />

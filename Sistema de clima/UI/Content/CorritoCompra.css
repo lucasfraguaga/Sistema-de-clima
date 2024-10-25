@@ -1,0 +1,27 @@
+﻿/* Establece el fondo celeste y centra el contenido de la página */
+html, body {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	/*align-items: center; /* Centrado vertical */
+	justify-content: center; /* Centrado horizontal */
+	background-color: #87CEEB;
+}
+
+/* Contenedor principal con estilo de tarjeta centrada */
+.container {
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+	text-align: center;
+	max-width: 800px; /* Ajusta el ancho máximo */
+	width: 100%;
+	box-sizing: border-box;
+	margin-top: 50px; /* Ajusta este valor según lo necesites */
+}
+
+	/* Centra las tablas del GridView */
+	.container table {
+		margin: auto; /* Centra las tablas de productos y carrito */
+	}

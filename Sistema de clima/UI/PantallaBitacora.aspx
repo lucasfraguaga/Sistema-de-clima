@@ -4,12 +4,13 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
+    <link href="Content/CorritoCompra.css" rel="stylesheet" type="text/css" />
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
     <title></title>
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
+        <div class="container">
         El usuario ingresado es:
         <asp:Label ID="Label1" runat="server" Text="Label"></asp:Label>
         <br />
@@ -17,7 +18,7 @@
         <asp:Label ID="Label2" runat="server" Text="Label"></asp:Label>
         <br />
         <br />
-        Bitacora:<asp:GridView ID="GridView1" runat="server" AutoGenerateColumns="true">
+        Bitacora:<asp:GridView ID="GridView1" runat="server" AllowPaging="True" PageSize="10" OnPageIndexChanging="GridView1_PageIndexChanging">
         </asp:GridView>
             <br />
             <asp:Button ID="Button2" runat="server" OnClick="Button2_Click" Text="Volver" Width="355px" />

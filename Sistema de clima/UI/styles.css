@@ -1,0 +1,22 @@
+﻿/* Fondo celeste y centrado */
+body, html {
+	height: 100%;
+	margin: 0;
+	display: flex;
+	/*align-items: center; /* Centra verticalmente */
+	justify-content: center; /* Centra horizontalmente */
+	background-color: #87CEEB; /* Color de fondo celeste */
+	font-family: Arial, sans-serif;
+}
+
+/* Formulario centrado con estilo de tarjeta */
+.container {
+	background-color: white;
+	padding: 20px;
+	border-radius: 10px;
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Sombra ligera */
+	text-align: center; /* Centra el contenido dentro del contenedor */
+	max-width: 300px; /* Tamaño máximo de la tarjeta */
+	width: 100%; /* Hace que el contenedor ocupe el ancho total hasta el máximo */
+	margin-top: 50px; /* Ajusta este valor según lo necesites */
+}

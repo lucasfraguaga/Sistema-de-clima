@@ -66,5 +66,18 @@ namespace UI
             conexion.insertarBitacora((BLL.BLLSesionManager.GetInstance).Usuario, "vuelta a la pantalla de admin");       
             Response.Redirect("admin.aspx");
         }
+
+        protected void GridView1_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            GridView1.PageIndex = e.NewPageIndex;
+            CargarDatos(); // Método para volver a cargar los datos en el GridView
+        }
+        private void CargarDatos()
+        {
+            // Suponiendo que tienes un método ObtenerDatos() que obtiene los datos de la base de datos
+            var datos = conexion.listarBitacora();
+            GridView1.DataSource = datos;
+            GridView1.DataBind();
+        }
     }
 }

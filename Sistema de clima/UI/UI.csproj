@@ -103,6 +103,7 @@
     <Content Include="admin.aspx" />
     <Content Include="CarritoCompra.aspx" />
     <Content Include="Contact.aspx" />
+    <Content Include="Content\admin.css" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -119,6 +120,10 @@
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
+    <Content Include="Content\CorritoCompra.css" />
+    <Content Include="Content\fondo.jpg" />
+    <Content Include="Content\logo.jpg" />
+    <Content Include="Content\Presentacion.css" />
     <Content Include="Content\Site.css" />
     <Content Include="Default.aspx" />
     <Content Include="EstadisticaVenta.aspx" />
@@ -129,6 +134,7 @@
     <Content Include="Pago.aspx" />
     <Content Include="PantallaBitacora.aspx" />
     <Content Include="PantallaUsuarios.aspx" />
+    <Content Include="Presentacion.aspx" />
     <Content Include="Principal.aspx" />
     <Content Include="Registro.aspx" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -137,6 +143,7 @@
     <Content Include="Scripts\bootstrap.esm.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="styles.css" />
     <Content Include="WebServiceEstadisticoVenta.asmx" />
     <Content Include="WebServicePago.asmx" />
     <None Include="Scripts\jquery-3.7.0.intellisense.js" />
@@ -239,6 +246,13 @@
     </Compile>
     <Compile Include="PantallaUsuarios.aspx.designer.cs">
       <DependentUpon>PantallaUsuarios.aspx</DependentUpon>
+    </Compile>
+    <Compile Include="Presentacion.aspx.cs">
+      <DependentUpon>Presentacion.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Presentacion.aspx.designer.cs">
+      <DependentUpon>Presentacion.aspx</DependentUpon>
     </Compile>
     <Compile Include="Principal.aspx.cs">
       <DependentUpon>Principal.aspx</DependentUpon>
